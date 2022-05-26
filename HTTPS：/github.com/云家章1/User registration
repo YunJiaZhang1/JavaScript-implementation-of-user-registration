@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            border: 1px solid
+            font-size： 12px;
+            color: rgb(250, 35, 7);
+        }
+        body {
+            
+            background-image:  url('images/HTML background image.jpeg');
+            background-size: 100%;
+        }
+        input {
+            
+        }
+    </style>
+</head>
+<body align="center">
+    <form action=""><pre>
+    Username:<input type="text" name='username' value="" id='username'></pre><span id='usernamespan' value=''></span>
+    <br>
+    <pre>Password:<input type="text" value='' name='userpwd' id='userpwd'></pre><span id='userpwdspan' name=''></span>
+    <br>
+    Confirm Password:<input type="text" name='' value =''id='confirmpwd'><span id='enterpwdspan' ></span>
+    <br>
+    <input type="button" value="Registration" id="submit"  name=''>
+    <script>
+        window.onload = function(){
+            var usernameEle=  document.getElementById('username')
+            var usernamespan=document.getElementById('usernamespan')
+            var userpwd=document.getElementById('userpwd')
+            var confirmpwd=document.getElementById('confirmpwd')
+         
+         usernameEle.onblur = function(){
+             var usernamevalue=usernameEle.value;
+             usernamevalue=usernamevalue.trim();
+             if (usernamevalue=='') {
+                 usernamespan.innerHTML='Username cannot be empty! ';
+                 
+             }else{
+                 if (usernamevalue.length>14||usernamevalue.length<6) {
+                     usernamespan.innerHTML='Username must be 6-14 letters or numbers'
+                 }else{
+                     var regexp=/^[a-zA-Z0-9]+$
+                     var ok=regexp.test(usernamevalue)
+                     if (ok) {
+                        usernamespan.innerHTML=''
+                     }else{
+                        usernamespan.innerHTML='Users can only be composed of numbers or letters'
+                        
+                     }
+                 }
+             }
+             
+         }
+         usernameEle.onfocus=function(){
+             usernamespan.innerHTML='';
+         }
+         var userpwdspan=document.getElementById('userpwdspan')
+         var enterpwdspan=document.getElementById('enterpwdspan')
+         confirmpwd.onblur=function(){
+             if (confirmpwd.value!=userpwd.value) {
+                 enterpwdspan.innerHTML='Username and password do not match'
+             }else{
+                 enterpwdspan.innerHTML=''
+             }
+         }
+         var submitt=document.getElementById('submit')
+         submitt.onclick=function(){
+             usernameEle.onfocus();
+             usernameEle.onblur();
+             userpwd.onfocus();
+             userpwd.onblur();
+         }
+        
+        }
+    </script>
+</form>
+</body>
+</html>
